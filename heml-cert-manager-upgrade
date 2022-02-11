@@ -1,0 +1,14 @@
+k -n nginx-ingress delete serviceaccount cert-manager-cainjector cert-manager-controller cert-manager-webhook
+
+k -n nginx-ingress delete clusterrole cert-manager-cainjector
+
+k -n nginx-ingress delete clusterrolebinding cert-manager-cainjector
+
+k -n nginx-ingress delete service cert-manager-webhook
+
+k -n nginx-ingress delete deploy cert-manager-cainjector
+
+k -n nginx-ingress delete deploy cert-manager-webhook
+
+
+helm install cert-manager jetstack/cert-manager --namespace nginx-ingress --version v1.6.1 --set installCRDs=true

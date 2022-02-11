@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-prod
+  namespace: soro-develop
+spec:
+  secretName: letsencrypt-prod-tls
+  duration: 20000h # 2years
+  renewBefore: 10000h # 1year
+  subject:
+    organizations:
+      - SORO-LINGO
+  dnsNames:
+    - 'soro-lingo.com'
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

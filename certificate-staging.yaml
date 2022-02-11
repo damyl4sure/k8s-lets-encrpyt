@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-staging
+  namespace: soro-develop
+spec:
+  secretName: letsencrypt-staging-tls
+  duration: 20000h # 2 years
+  renewBefore: 10000h # 1 year
+  subject:
+    organizations:
+      - SORO-LINGO
+  dnsNames:
+    - 'soro-lingo.com'
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
